@@ -2,7 +2,7 @@ name: pipeline
 on:
   push:
     branches:
-      - "go_app_compose_cdci"
+      - "main"
 
 jobs:
   deploy:
@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: go_app_compose_cdci
+          ref: main
 
       - name: setup docker buildx
         uses: docker/setup-buildx-action@v2
@@ -29,4 +29,4 @@ jobs:
         with:
           context: ./docker
           push: true
-          tags: linhbngo/go_server:latest
+          tags: gavincbean/go_server:latest
